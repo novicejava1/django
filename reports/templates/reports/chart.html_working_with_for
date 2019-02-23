@@ -1,0 +1,12 @@
+<form action="/reports/chart" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+    	{% for x,y in form.fields.chartName.choices %}
+        	<tr>
+                	<td><input type="radio" name="chartName" value="{{ x }}"><img src={{ y }} width="250" height="250"</img></td>
+            	</tr>
+        {% endfor %}
+    </table>
+    <input type="file" name="myfile">
+    <input type="submit" value="Submit">
+</form>

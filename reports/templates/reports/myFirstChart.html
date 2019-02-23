@@ -1,0 +1,18 @@
+<!-- Filename: app_name/templates/index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FC-python wrapper</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static "reports/js/fusioncharts.js" %}"></script>
+    <script type="text/javascript" src="{% static "reports/js/themes/fusioncharts.theme.fusion.js" %}"></script>
+</head>
+
+<body>
+    <div id="myFirstchart-container">{{ output|safe }}</div>
+    <p><a href="selectchart">Return to home</a></p>
+
+</body>
+
+</html>

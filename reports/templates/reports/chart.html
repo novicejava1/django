@@ -1,0 +1,39 @@
+<!-- Filename: app_name/templates/index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FC-python wrapper</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static "reports/js/fusioncharts.js" %}"></script>
+    <script type="text/javascript" src="{% static "reports/js/themes/fusioncharts.theme.fusion.js" %}"></script>
+</head>
+
+<style type="text/css">
+        div.chartcss {
+            float: left;
+	    width: auto;
+        }
+</style>
+
+<body>
+<form action="/reports/chart" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {% for x,y in form.fields.chartName.choices %}
+		
+		<div class="chartcss">
+		<input type="radio" name="chartName" value="{{ x }}"><img src="/static/{{ y }}" width="300" height="300"</img>
+		</div>
+		
+        {% endfor %}
+    </table>
+    <div class="chartcss">
+	    <input type="file" name="myfile"/><br>
+	    <input type="submit" value="Submit"/><br>
+    </div>
+</form>
+
+</body>
+
+</html>

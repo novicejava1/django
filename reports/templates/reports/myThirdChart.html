@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FC-python wrapper</title>
+
+<!-- If you are using downloaded FusionCharts libraries, uncomment the below code   -->
+
+	{% load static %} 
+   	<script type="text/javascript" src="{% static "reports/js//fusioncharts.js" %}"></script>
+   	<script type="text/javascript" src="{% static "reports/js/themes/fusioncharts.theme.fusion.js" %}"></script>
+	
+
+
+</head>
+<body style="font-family:'Helvetica Neue', Arial; font-size: 16px;">
+	<h3>{{ chartTitle|safe }}</h3>
+	<div id="myThirdChart-container">{{ output|safe }}</div>
+	<div id="myThirdChart-container">{{ output_2|safe }}</div>
+	<br/>
+	<p><a href="selectchart">Return to home</a></p>
+</body>
+</html>
+
+
+

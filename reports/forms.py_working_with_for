@@ -1,0 +1,25 @@
+from django import forms
+
+class NameForm(forms.Form):
+    your_name = forms.CharField(label='Your name', max_length=100)
+
+#CHART_CHOICES = [
+#        ('tablechart', 'tablechart'),
+#        ('barchart', 'barchart'),
+#        ('piechart', 'piechart'),
+#        ('linechart', 'linechart'),
+#]
+
+class ChartForm(forms.Form):
+
+    CHART_CHOICES = (
+        ("tablechart", "https://www.w3schools.com/html/img_girl.jpg"),
+        ("barchart", "https://www.w3schools.com/html/img_chania.jpg"),
+        ("piechart", "https://www.w3schools.com/html/pic_trulli.jpg"),
+        ("linechart", "https://www.w3schools.com/html/img_chania.jpg")
+)
+
+#    chartName = forms.CharField(label="Select the Type of Chart to Generate",widget=forms.RadioSelect(choices=CHART_CHOICES))
+#    chartName = forms.ChoiceField(widget=forms.RadioSelect, choices=CHART_CHOICES)
+    chartName = forms.ChoiceField(widget=forms.RadioSelect, choices=CHART_CHOICES)
+

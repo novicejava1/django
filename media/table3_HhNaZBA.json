@@ -1,0 +1,35 @@
+{
+    "chart": {
+        "caption": "Students Data from year 1990 - 2019",
+        "subCaption": "Details of the Students",
+        "xAxisName": "Name",
+        "yAxisName": "Score",
+        "numberSuffix": "K",
+        "theme": "fusion"
+    },
+    "data": [{
+        "label": "Mike",
+        "value": "290"
+    }, {
+        "label": "Tim",
+        "value": "260"
+    }, {
+        "label": "Peg",
+        "value": "180"
+    }, {
+        "label": "Jerry",
+        "value": "140"
+    }, {
+        "label": "Russle",
+        "value": "115"
+    }, {
+        "label": "Terry",
+        "value": "100"
+    }, {
+        "label": "Pam",
+        "value": "30"
+    }, {
+        "label": "Chris",
+        "value": "30"
+    }]
+}

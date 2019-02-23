@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Django Wrapper | FusionCharts</title>
+   {% load static %}
+   <script type="text/javascript" src="{% static "reports/js//fusioncharts.js" %}"></script>
+   <script type="text/javascript" src="{% static "reports/js//themes/fusioncharts.theme.fint.js" %}"></script>
+  </head>
+  <body>
+    <!-- FusionCharts will render here-->
+    <div id="myFourthChart-container"></div>
+    <!-- dumping JavaScript code here -->
+    {{ output|safe }}
+    <p><a href="selectchart">Return to home</a></p>
+  </body>
+</html>
