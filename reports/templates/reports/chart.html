@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>FC-python wrapper</title>
+    <title>Graphical Reporting Application</title>
     {% load static %}
     <script type="text/javascript" src="{% static "reports/js/fusioncharts.js" %}"></script>
     <script type="text/javascript" src="{% static "reports/js/themes/fusioncharts.theme.fusion.js" %}"></script>
@@ -11,23 +11,45 @@
 
 <style type="text/css">
         div.chartcss {
-            float: left;
-	    width: auto;
+            float: right;
+            width: auto;
         }
+	fieldset.optionGroup
+    {
+    float: none;
+    margin-left: 1%;
+           }
+fieldset.optionGroup label
+    {
+    display: inline;
+    float: none;
+    width: 100px;
+    }
+fieldset.optionGroup input
+    {
+    float:none;
+    margin: 0px;
+    width: 20px;
+    position:relative;
+    top:-100px;
+    }
+
+
 </style>
 
 <body>
+
+<h1>Generate Graph based on Selected Chart type and JSON input file</h1>
 <form action="/reports/chart" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <table>
+    <fieldset class="optionGroup">
         {% for x,y in form.fields.chartName.choices %}
 		
-		<div class="chartcss">
-		<input type="radio" name="chartName" value="{{ x }}"><img src="/static/{{ y }}" width="300" height="300"</img>
-		</div>
+		<label>
+			<input type="radio" name="chartName" value="{{ x }}"><img src="/static/{{ y }}" width="250" height="250"</img></input></label>
 		
         {% endfor %}
-    </table>
+	</fieldset>
     <div class="chartcss">
 	    <input type="file" name="myfile"/><br>
 	    <input type="submit" value="Submit"/><br>
