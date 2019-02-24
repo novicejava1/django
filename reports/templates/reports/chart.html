@@ -10,15 +10,33 @@
 </head>
 
 <style type="text/css">
-        div.chartcss {
-            float: right;
-            width: auto;
-        }
-	fieldset.optionGroup
+body  {
+
+  background-color: #002b80
+}
+h1,h2,h3,h4 {
+  color: white;
+  text-align: center;
+}
+div.chartcss {
+    display: block;
+    padding: 5px;
+    margin-left: 1%;
+    margin-bottom: 5px;
+    text-align: justify;
+    width: auto;
+    color: white;
+    }
+div.chartcss input{
+    border: 1px solid #ccc;
+    }
+
+fieldset.optionGroup
     {
     float: none;
     margin-left: 1%;
-           }
+    border:0;
+    }
 fieldset.optionGroup label
     {
     display: inline;
@@ -34,26 +52,95 @@ fieldset.optionGroup input
     top:-100px;
     }
 
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
 
 </style>
 
 <body>
 
-<h1>Generate Graph based on Selected Chart type and JSON input file</h1>
+<h3>Generate graph based on selected Chart type and JSON input file</h3>
 <form action="/reports/chart" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="optionGroup">
         {% for x,y in form.fields.chartName.choices %}
 		
-		<label>
-			<input type="radio" name="chartName" value="{{ x }}"><img src="/static/{{ y }}" width="250" height="250"</img></input></label>
+		<label class="container">
+			<input type="radio" name="chartName" value="{{ x }}"><img src="/static/{{ y }}" width="250" height="250"</img></input>
+		<span class="checkmark"></span>
+		</label>
 		
         {% endfor %}
 	</fieldset>
-    <div class="chartcss">
-	    <input type="file" name="myfile"/><br>
-	    <input type="submit" value="Submit"/><br>
-    </div>
+	<br><br>
+	<div class="chartcss">
+	    <input type="file" id="file" name="myfile"/>
+	</div>
+	<div class="chartcss"> 
+	    <input type="submit" value="Generate Report"/>
+	</div>
+
 </form>
 
 </body>
