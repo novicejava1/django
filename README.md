@@ -22,7 +22,7 @@ pip install json2html
 
 4. Clone the repository onto local machine
 
-git clone <git_repository>
+git clone https://github.com/novicejava1/django.git
 
 5. Run the Application
 
@@ -31,3 +31,5 @@ python manage.py runserver 0:8000
 6. Test the URL
 
 http://<FQDN or IP>:8000/reports/selectchart
+
+Note - Make sure to download and use the json files uploaded in the project repository jsonfiles folder. 
