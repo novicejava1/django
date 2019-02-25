@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from collections import OrderedDict
+from django.conf import settings
 
 from json2html import *
 import json
+import os
 
 from django.http import HttpResponseRedirect
 from .forms import NameForm
@@ -20,8 +22,10 @@ def myFirstChart(request):
     fs = FileSystemStorage()
     filename = fs.save(myfile.name, myfile)
     uploaded_file_url = fs.url(filename)
-
-    file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
+    document_root = settings.MEDIA_ROOT
+    docfile = document_root + "/" + filename
+    #file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
+    file = open("%s" % docfile, "r")
     mydata = json.load(file)
     dataSource = json.dumps(mydata)
 
@@ -40,8 +44,10 @@ def mySecondChart(request):
     fs = FileSystemStorage()
     filename = fs.save(myfile.name, myfile)
     uploaded_file_url = fs.url(filename)
-
-    file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
+    document_root = settings.MEDIA_ROOT
+    docfile = document_root + "/" + filename
+    file = open("%s" % docfile, "r")
+    #file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
     data = json.load(file)
     response = json2html.convert(json = data)
     #context = {'response': response}
@@ -55,8 +61,10 @@ def myThirdChart(request):
     fs = FileSystemStorage()
     filename = fs.save(myfile.name, myfile)
     uploaded_file_url = fs.url(filename)
-
-    file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
+    document_root = settings.MEDIA_ROOT
+    docfile = document_root + "/" + filename
+    file = open("%s" % docfile, "r")
+    #file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
     mydata = json.load(file)
     dataSource = json.dumps(mydata)
 
@@ -72,8 +80,10 @@ def myFourthChart(request):
     fs = FileSystemStorage()
     filename = fs.save(myfile.name, myfile)
     uploaded_file_url = fs.url(filename)
-
-    file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
+    document_root = settings.MEDIA_ROOT
+    docfile = document_root + "/" + filename
+    file = open("%s" % docfile, "r")
+    #file = open("/home/admin1/pythonDjango/mysite/%s" % uploaded_file_url, "r")
     mydata = json.load(file)
     dataSource = json.dumps(mydata)
 
